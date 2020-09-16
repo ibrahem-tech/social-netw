@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import "./Video.css";
-import vid from "./tiktok.mp4";
+
 import VideoFooter from "./VideoFooter";
 import VideoSidebar from "./VideoSidebar";
 
@@ -24,7 +24,7 @@ function Video({ url, channel, description, song, likes, messages, shares }) {
         className="video__player"
         loop
         ref={videoRef}
-        src={vid}
+        src={url}
         type="video/mp4"
       ></video>
 

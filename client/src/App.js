@@ -1,35 +1,42 @@
-import React from "react";
-import Video from "./components/Video";
+import React, { useEffect, useState } from "react";
+import axios from "./api/axios";
+import Logo from "./signature.png";
 import "./App.css";
 
+import Video from "./components/Video";
 function App() {
+  const [videos, setVideos] = useState([]);
+
+  useEffect(() => {
+    async function fetchPosts() {
+      const response = await axios.get("/v2/posts");
+      setVideos(response.data);
+      return response;
+    }
+    /* db.collection("videos").onSnapshot((snapshot) =>
+      setVideos(snapshot.docs.map((doc) => doc.data()))
+    );*/
+
+    fetchPosts();
+  }, []);
+
   return (
     <div className="app">
-      {/* APP CONTAINER */}
-      {/* VIDEOS */}
-      {/* VIDEOS */}
-      {/* VIDEOS */}
-      {/* VIDEOS */}
-      {/* VIDEOS */}
-      {/* VIDEOS */}
-
+      <img className="nav__logo" src={Logo} alt="my-logo" />
       <div className="app__videos">
-        <Video
-          channel="user"
-          description="Diamonds "
-          song="Element - @Pop Smoke"
-          likes={3323}
-          messages={1234}
-          shares={221}
-        />
-        <Video
-          channel="user"
-          description="Diamonds "
-          song="Element - @Pop Smoke"
-          likes={3323}
-          messages={1234}
-          shares={221}
-        />
+        {videos.map(
+          ({ url, channel, description, song, likes, messages, shares }) => (
+            <Video
+              url={url}
+              channel={channel}
+              song={song}
+              likes={likes}
+              messages={messages}
+              description={description}
+              shares={shares}
+            />
+          )
+        )}
       </div>
     </div>
   );
