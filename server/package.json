@@ -1,0 +1,25 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Er-network backend",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "type": "module"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ibrahem-tech/social-netw.git"
+  },
+  "author": "Ebrahim Rian",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ibrahem-tech/social-netw/issues"
+  },
+  "homepage": "https://github.com/ibrahem-tech/social-netw#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.10.5"
+  }
+}
